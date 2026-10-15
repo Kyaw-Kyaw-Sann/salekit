@@ -1,30 +1,30 @@
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./pages/Dashboard";
+import POS from "./pages/POS";
+import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
+import ProductFormPage from "./pages/ProductFormPage";
+import SalesHistory from "./pages/SalesHistory";
+import NotFound from "./pages/NotFound";
+
 function App() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background p-6">
-      <div className="rounded-xl border border-border bg-surface p-8 text-center shadow-sm">
-        <img
-          src="/SaleKit.svg"
-          alt="SaleKit"
-          className="mx-auto h-20 w-20"
-        />
-
-        <h1 className="mt-4 text-3xl font-bold text-heading">
-          SaleKit
-        </h1>
-
-        <p className="mt-2 text-body">
-          Point of Sale starter app
-        </p>
-
-        <button
-          type="button"
-          className="mt-6 rounded-md bg-primary px-4 py-2 text-on-primary hover:bg-primary-hover"
-        >
-          Setup Complete
-        </button>
-      </div>
-    </main>
-  )
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="pos" element={<POS />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/:productId" element={<ProductDetails />} />
+        <Route path="products/new" element={<ProductFormPage />} />
+        <Route path="products/:productId/edit" element={<ProductFormPage />} />
+        <Route path="sales" element={<SalesHistory />} />
+        <Route path="sales/:saleId" element={<SalesHistory />} />
+        <Route path="*" element={<NotFound/>}/>
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
