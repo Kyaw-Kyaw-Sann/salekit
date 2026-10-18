@@ -9,10 +9,14 @@ import SalesHistory from "./pages/SalesHistory";
 import NotFound from "./pages/NotFound";
 import { initialProducts } from "./data/initialProducts";
 import { useState } from "react";
-import type { Product, ProductFormData } from "./types";
+import type { Product, ProductFormData, Sale } from "./types";
+import SaleDetails from "./pages/SaleDetails";
+import { initialSales } from "./data/initialSales";
 
 function App() {
   const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [sales, setSales] = useState<Sale[]>(initialSales)
+
 
   function handleAddProduct(productData: ProductFormData) {
     // form data don't include id
@@ -46,7 +50,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Dashboard products={products} sales={sales} />} />
         <Route path="pos" element={<POS />} />
         <Route
           path="products"
@@ -82,7 +86,7 @@ function App() {
           }
         />
         <Route path="sales" element={<SalesHistory />} />
-        <Route path="sales/:saleId" element={<SalesHistory />} />
+        <Route path="sales/:saleId" element={<SaleDetails />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -27,14 +27,14 @@ export const initialProducts: Product[] = [
     name: "Iced Coffee",
     price: 3.25,
     category: "Drinks",
-    stock: 15,
+    stock: 4,
   },
   {
     id: "product-5",
     name: "Green Tea",
     price: 2.75,
     category: "Drinks",
-    stock: 10,
+    stock: 3,
   },
   {
     id: "product-6",
